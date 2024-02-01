@@ -1,0 +1,19 @@
+{
+    "name": "usuario/app-salon_php_mvc_js_sass",
+    "description": "Proyecto PHP, 8 MVC,SQL,SASS,GULP",
+    "type": "proyect",
+    "autoload": {
+        "psr-4": {
+           "MVC\\" : "./",
+           "Controlleres\\" : "./controllers",
+           "Model\\" : "./models"
+        }
+    },
+    "authors": [
+        {
+            "name": "patxi",
+            "email": "patxiarana05@gmail.com"
+        }
+    ],
+    "require": {}
+}
