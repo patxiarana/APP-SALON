@@ -9,4 +9,4 @@ if (!$db) {
     echo "error de depuración: " . mysqli_connect_error();
     exit;
 }
- */
+ */  
