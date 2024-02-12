@@ -8,7 +8,7 @@
         id="nombre"
         name="nombre"
         placeholder="Tu nombre.."
-
+        value="<?php echo s($usuario->nombre); ?>" 
         />
     </div>
     <div class="campo">
@@ -17,6 +17,7 @@
         id="apellido"
         name="apellido"
         placeholder="Tu Apellido.."
+        value="<?php echo s($usuario->apellido); ?>" 
          />
     </div>
     <div class="campo">
@@ -25,6 +26,7 @@
         id="telefono"
         name="telefono"
         placeholder="Tu Telefono.."
+        value="<?php echo s($usuario->telefono); ?>" 
          />
     </div>
     <div class="campo">
@@ -33,6 +35,7 @@
         id="email"
         name="email"
         placeholder="Tu E-mail.."
+        value="<?php echo s($usuario->email); ?>" 
          />
     </div>
     <div class="campo">

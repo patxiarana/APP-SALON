@@ -1,6 +1,8 @@
 <?php
 
-namespace Controllers ; 
+namespace Controllers ;
+
+use Model\Usuario;
 use MVC\Router ; 
 
 class LoginController {
@@ -23,8 +25,13 @@ class LoginController {
         echo "Desde recuperar";
     }
     public static function crear(Router $router) {
-      $router->render('auth/crear-cuenta', [
-
+        $usuario = new Usuario ; 
+        if($_SERVER['REQUEST_METHOD'] === 'POST') { 
+            $usuario->sincronizar($_POST) ; 
+        }
+     
+        $router->render('auth/crear-cuenta', [
+          'usuario'=>$usuario, 
       ]) ; 
     }
 }
