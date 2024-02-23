@@ -35,8 +35,13 @@ class LoginController {
 
           //Revisar que alertas este vacio 
           if(empty($alertas)) {
-            echo "Pasaste la validacion" ;
-          }
+       $resultado = $usuario->existeUsuario() ; 
+        if($resultado->num_rows)    
+           $alertas = Usuario::getAlertas() ; 
+      } else {
+        //no esta registrado 
+        debuguear("no esta registrado") ; 
+      }
            
         }
      
