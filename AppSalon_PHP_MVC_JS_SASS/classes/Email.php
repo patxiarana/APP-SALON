@@ -3,7 +3,6 @@
 namespace Classes;
 
 use PHPMailer\PHPMailer\PHPMailer;
-
 class Email
 {
     public $email;
@@ -26,9 +25,9 @@ class Email
         $mail->SMTPAuth = true;
         $mail->Port = 2525;
         $mail->Username = 'a91969de70f46f';
-        $mail->Password = '********1a7a';
+        $mail->Password = '41be879d3c1a7a';
         $mail->setFrom('cuentas@appsalon.com');
-        $mail->addAddress('cuentas@appsalon' , 'AppSalon.com');
+        $mail->addAddress('cuentas@appsalon.com' , 'AppSalon.com');
         $mail->Subject = "Confirma tu cuenta" ; 
 
         //Set html 
@@ -41,7 +40,7 @@ $contenido .= "<p>Presiona aquí: <a href='http://localhost/confirmar-cuenta?tok
 $contenido .= "</html>" ; 
 
 $mail->Body = $contenido ; 
-
+//debuguear($mail) ;
 //Enviar el email
 $mail->send() ; 
 }
