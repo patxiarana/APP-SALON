@@ -36,7 +36,7 @@ class Email
 
         $contenido = "<html>";
 $contenido .= "<p><strong>Hola " . $this->nombre . "</strong>. Has creado tu cuenta en appsalon. Solo debes confirmarla presionando el siguiente enlace:</p>";
-$contenido .= "<p>Presiona aquí: <a href='http://localhost/confirmar-cuenta?token=" . $this->token . "'>confirmar cuenta</a></p>";
+$contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token . "'>confirmar cuenta</a></p>";
 $contenido .= "</html>" ; 
 
 $mail->Body = $contenido ; 

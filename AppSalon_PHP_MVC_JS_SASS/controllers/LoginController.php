@@ -93,7 +93,7 @@ class LoginController
       Usuario::setAlerta('error', 'Token no valido');
     } else {
       //modificar a usuario confirmado 
-      $usuario->confirmado = "1";
+      $usuario->confirmado  = "1";
       $usuario->token = null;
       $usuario->guardar();
       Usuario::setAlerta('exito', 'Cuenta Comprobada Correctamente');

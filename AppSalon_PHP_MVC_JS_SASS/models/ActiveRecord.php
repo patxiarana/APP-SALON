@@ -74,8 +74,9 @@ class ActiveRecord {
     public function sanitizarAtributos() {
         $atributos = $this->atributos();
         $sanitizado = [];
-        foreach($atributos as $key => $value ) {
-            $sanitizado[$key] = self::$db->escape_string($value);
+        foreach($atributos as $key => $value) {
+            // Utilizar el operador de fusión de null para proporcionar una cadena vacía si $value es null
+            $sanitizado[$key] = self::$db->escape_string($value ?? '');
         }
         return $sanitizado;
     }
@@ -161,7 +162,7 @@ class ActiveRecord {
         // Iterar para ir agregando cada campo de la BD
         $valores = [];
         foreach($atributos as $key => $value) {
-            $valores[] = "{$key}='{$value}'";
+            $valores[] = "$key='$value'";
         }
 
         // Consulta SQL
