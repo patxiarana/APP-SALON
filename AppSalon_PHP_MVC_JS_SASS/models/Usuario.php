@@ -23,7 +23,7 @@ class Usuario extends ActiveRecord {
   {
    $this->id = $args['id'] ?? null ; 
    $this->nombre =$args['nombre'] ?? '' ; 
-   $this->apellido =$args['apeliido'] ?? '' ;
+   $this->apellido =$args['apellido'] ?? '' ;
    $this->email =$args['email'] ?? '';   
    $this->telefono =$args['telefono'] ?? '' ; 
    $this->admin =$args['admin'] ?? 0 ; 
@@ -78,15 +78,14 @@ return $resultado ;
 } 
 
 public function hashPassword() {
-  $this->password = password_hash($this->password, PASSWORD_BCRYPT ) ; 
-} 
+  $this->password = password_hash($this->password, PASSWORD_BCRYPT);
+}
 
 public function crearToken() {
   $this->token = uniqid() ; 
 }
-
-public function comprobarPasswordAndVerificado() {
-  debuguear($this) ; 
+public function comprobarPasswordAndVerificado($password) {
+  $resultado = password_verify($password, $this->password);
+  debuguear($resultado); 
 }
-
 }
