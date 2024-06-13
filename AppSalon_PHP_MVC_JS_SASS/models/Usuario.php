@@ -52,6 +52,19 @@ public function validarNuevaCuenta() {
 
 return self::$alertas ;
 }
+
+
+public function validarLogin() {
+  if(!$this->email) {
+    self::$alertas['error'][] = 'El email del cliente es obligatorio' ; 
+    } 
+    if(!$this->password) {
+      self::$alertas['error'][] = 'El password del cliente es obligatorio' ; 
+      } 
+      return self::$alertas ; 
+  } 
+
+
 //revisa si el usuario ya existe 
 public function existeUsuario() {
   $query = "SELECT * FROM " . self::$tabla . " WHERE email = '" . $this->email . "' LIMIT 1";
