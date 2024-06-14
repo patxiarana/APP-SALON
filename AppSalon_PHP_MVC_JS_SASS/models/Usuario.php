@@ -64,6 +64,12 @@ public function validarLogin() {
       return self::$alertas ; 
   } 
 
+  public function validarEmail() {
+    if(!$this->email) {
+      self::$alertas['error'][] = 'El email del cliente es obligatorio' ; 
+      }
+      return self::$alertas ;
+  }
 
 //revisa si el usuario ya existe 
 public function existeUsuario() {
