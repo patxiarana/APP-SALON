@@ -4,8 +4,13 @@ namespace Controllers;
 use MVC\Router ; 
 class CitaController {
     public static function index(Router  $router ) {
-       $router->render('cita/index', [
+        error_reporting(E_ALL & ~E_NOTICE);
+        ini_set('display_errors', '0');       
+        session_start() ;
 
+
+       $router->render('cita/index', [
+           'nombre'=> $_SESSION['nombre'],
        ]) ; 
     }
 } 
