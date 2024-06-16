@@ -9,7 +9,15 @@ function iniciarApp() {
     tabs(); // Cambia la seccciones cuando se precionen los tabs 
 }
 function mostrarSeccion() {
-    console.log("Mostrar seccion") ; 
+//Ocultar la seccion que tenga la clase de mostrar 
+const seccionAnterior = document.querySelector('.mostrar') ; 
+if(seccionAnterior) {
+seccionAnterior.classList.remove('mostrar')
+}
+
+    //Seleccionar la seccion con el paso..
+    const seccion = document.querySelector(`#paso-${paso}`) 
+    seccion.classList.add('mostrar')
 }
 function tabs() { 
     const botones = document.querySelectorAll('.tabs button') ;
