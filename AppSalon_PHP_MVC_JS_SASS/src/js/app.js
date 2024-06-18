@@ -24,6 +24,7 @@ function iniciarApp() {
 
     nombreCliente(); //Almacena el nombre del cliente en el objeto de cita 
     seleccionarFecha() ; //Almacena la fecha de la cita en el objeto  
+    seleccionarHora() ; //Almacena la hora de la cita en el objeto 
 }
 function mostrarSeccion() {
 //Ocultar la seccion que tenga la clase de mostrar 
@@ -178,6 +179,24 @@ function seleccionarFecha() {
   } )
 }
 
+function seleccionarHora() {
+    const inputHora = document.querySelector('#hora');
+    inputHora.addEventListener('input', function(e){
+     
+
+        const horaCita = e.target.value
+        const hora = horaCita.split(":")[0];
+        console.log(hora)
+       if(hora < 10 || hora > 20) {
+        e.target.value = '' ;
+       mostrarAlerta('Las horas disponibles son de 10 a 20', 'error');
+       } else {
+       cita.hora = e.target.value ; 
+       console.log(cita); 
+       }
+    })
+}
+
 function mostrarAlerta(mensaje, tipo) {
     //Prieviene que se genere mas de una alerta 
    const alertaPrevia = document.querySelector('.alerta')
@@ -197,3 +216,4 @@ function mostrarAlerta(mensaje, tipo) {
     alerta.remove() ; 
    }, 3000) ;
 }
+
