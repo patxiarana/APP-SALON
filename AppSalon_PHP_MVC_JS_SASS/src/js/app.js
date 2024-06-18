@@ -1,6 +1,14 @@
 let paso = 1;
 let pasoInicial = 1 ; 
 let pasoFinal = 3 ; 
+
+const cita = {
+    nombre : '',
+    fecha : '',
+    hora : '',
+    servicios : [] ,
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     iniciarApp();
 });
@@ -118,7 +126,16 @@ servicios.forEach( servicio => {
 
      servicioDiv.appendChild(nombreServicio) ;
      servicioDiv.appendChild(precioServicio) ;
-
+     servicioDiv.onclick = function () {
+        seleccionarServicio(servicio); 
+     }
     document.querySelector('#servicios').appendChild(servicioDiv) ;
 })
+}
+
+function seleccionarServicio(servicio) {
+    const {servicios} = cita ; 
+
+    cita.servicios = [...servicios, servicio] ; 
+    console.log(cita) ;
 }
