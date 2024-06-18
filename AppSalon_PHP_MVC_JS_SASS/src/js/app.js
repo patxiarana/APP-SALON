@@ -22,7 +22,8 @@ function iniciarApp() {
 
     consultarApi(); //Consulta la Api en el backend de php
 
-    nombreCliente() ; 
+    nombreCliente(); //Almacena el nombre del cliente en el objeto de cita 
+    seleccionarFecha() ; //Almacena la fecha de la cita en el objeto  
 }
 function mostrarSeccion() {
 //Ocultar la seccion que tenga la clase de mostrar 
@@ -158,4 +159,21 @@ function  nombreCliente() {
     const nombre = document.querySelector('#nombre').value ; 
 
     cita.nombre = nombre ; 
+}
+
+function seleccionarFecha() {
+  const inputFecha = document.querySelector('#fecha')
+  inputFecha.addEventListener('input', function(e) {
+    console.log('seleccionaste una fecha');
+   
+    const dia = new Date(e.target.value).getUTCDay(); 
+
+   if( [6,0].includes(dia)) {
+    e.target.value = '' ; 
+    console.log('sabados y domingos no abrimos')
+   } else {
+    cita.fecha = e.target.value ;
+   }
+
+  } )
 }
