@@ -33,6 +33,8 @@
         <input type="date"
         id="fecha"
         name="fecha"
+        min="2024-06-18"
+        min="<?php echo date("Y-m-d", strtotime('+1 day')) ;?>"
         />
     </div>
     <div class="campo">
