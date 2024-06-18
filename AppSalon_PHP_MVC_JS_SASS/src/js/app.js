@@ -21,6 +21,8 @@ function iniciarApp() {
     paginaAnterior() ;
 
     consultarApi(); //Consulta la Api en el backend de php
+
+    nombreCliente() ; 
 }
 function mostrarSeccion() {
 //Ocultar la seccion que tenga la clase de mostrar 
@@ -150,5 +152,10 @@ function seleccionarServicio(servicio) {
   }
     
 
-    console.log(cita) ;
+}
+
+function  nombreCliente() {
+    const nombre = document.querySelector('#nombre').value ; 
+
+    cita.nombre = nombre ; 
 }
