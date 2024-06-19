@@ -174,7 +174,7 @@ function seleccionarFecha() {
 
    if( [6,0].includes(dia)) {
     e.target.value = '' ; 
-    mostrarAlerta('Fines de semana no permitidos', 'error');
+    mostrarAlerta('Fines de semana no permitidos', 'error', '.formulario');
    } else {
     cita.fecha = e.target.value ;
    }
@@ -192,7 +192,7 @@ function seleccionarHora() {
         console.log(hora)
        if(hora < 10 || hora > 20) {
         e.target.value = '' ;
-       mostrarAlerta('Las horas disponibles son de 10 a 20', 'error');
+       mostrarAlerta('Las horas disponibles son de 10 a 20', 'error', '.formulario');
        } else {
        cita.hora = e.target.value ; 
        console.log(cita); 
@@ -200,10 +200,12 @@ function seleccionarHora() {
     })
 }
 
-function mostrarAlerta(mensaje, tipo) {
+function mostrarAlerta(mensaje, tipo, elemento, desaparece = true) {
     //Prieviene que se genere mas de una alerta 
    const alertaPrevia = document.querySelector('.alerta')
-   if(alertaPrevia) return ; 
+   if(alertaPrevia){
+    alertaPrevia.remove() ;
+   }
 
    //Scripting para crear la alerta 
    const alerta = document.createElement('DIV') ; 
@@ -211,21 +213,23 @@ function mostrarAlerta(mensaje, tipo) {
    alerta.classList.add('alerta') ; 
    alerta.classList.add(tipo) ; 
 
-   const formulario = document.querySelector('.formulario') ;
-   formulario.appendChild(alerta) ;
+   const referencia = document.querySelector(elemento) ;
+   referencia.appendChild(alerta) ;
 
    //Eliminar la alerta 
-   setTimeout(function() {
-    alerta.remove() ; 
-   }, 3000) ;
+   if(desaparece){
+    setTimeout(function() {
+        alerta.remove() ; 
+       }, 3000) ;
+   }
+
 }
 
 function mostrarResumen() {
     const resumen = document.querySelector('.contenido-resumen') ;
 
-     console.log(cita.servicios.length)
-    if(Object.values(cita).includes('')) {
-        console.log('hacen falta datos')
+    if(Object.values(cita).includes('') || cita.servicios.length === 0) {
+        mostrarAlerta('faltan datos de Servicios,Fecha u Hora','error', '.contenido-resumen', false)
     } else {
         console.log('todo bien')
     }
