@@ -286,11 +286,23 @@ while(resumen.firstChild) {
     fechaCita.innerHTML = `<span>Fecha:</span>${fechaFormateada}` ; 
 
     const horaCita= document.createElement('P') ; 
-    horaCita.innerHTML = `<span>Hora:</span>${hora} Horas` ;
-
+    horaCita.innerHTML = `<span>Hora:</span>${hora} Horas` ; 
 
     resumen.appendChild(nombreCliente) ; 
     resumen.appendChild(fechaCita) ;  
     resumen.appendChild(horaCita) ;  
-    console.log(nombreCliente) ;
+    
+
+    
+    //Boton para crear una cita 
+    const botonReservar = document.createElement('BUTTON') ; 
+    botonReservar.classList.add('boton') ;
+    botonReservar.textContent = 'Reservar Cita' ;
+    botonReservar.onclick = reservarCita ;
+    resumen.appendChild(botonReservar) ;
+}
+
+
+function reservarCita() { 
+    console.log('Reservando cita..')
 }
