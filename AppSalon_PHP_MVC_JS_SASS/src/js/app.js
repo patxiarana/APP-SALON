@@ -304,5 +304,9 @@ while(resumen.firstChild) {
 
 
 function reservarCita() { 
-    console.log('Reservando cita..')
+   const datos = new FormData() ;
+   datos.append('nombre', 'patxi')
+    ;
+//console.log([...datos]); 
+
 }
