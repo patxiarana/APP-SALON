@@ -304,9 +304,17 @@ while(resumen.firstChild) {
 
 
 async function reservarCita() { 
-   const datos = new FormData() ;
-   datos.append('nombre', 'patxi') ;
+    const {nombre, fecha, hora, servicios} = cita ; 
+    const idServicio = servicios.map(servicio => servicio.id) ; 
 
+   const datos = new FormData() ;
+   datos.append('nombre', nombre) ;
+   datos.append('fecha', fecha) ;
+   datos.append('hora', hora) ;
+   datos.append('servicios', idServicio) ;
+  // console.log([...datos]); 
+
+  
    //Peticion hacia la api 
    const url = 'http://localhost:3000/api/citas' ; 
 
