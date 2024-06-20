@@ -303,10 +303,18 @@ while(resumen.firstChild) {
 }
 
 
-function reservarCita() { 
+async function reservarCita() { 
    const datos = new FormData() ;
-   datos.append('nombre', 'patxi')
-    ;
+   datos.append('nombre', 'patxi') ;
+
+   //Peticion hacia la api 
+   const url = 'http://localhost:3000/api/citas' ; 
+
+   const respuesta = await fetch(url, {
+    method: 'POST', 
+   }) ;
+ const resultado = await respuesta.json() ; 
+ console.log(resultado) ;
 //console.log([...datos]); 
 
 }
