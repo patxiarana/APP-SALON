@@ -44,6 +44,7 @@
         name="hora"
         />
     </div>
+    <input type="hidden"  id="id" value="<?php echo $id; ?>">
 </form>
 
 </div>
