@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Model\Cita;
 use Model\Servicio;
+use Model\CitaServicio; 
 
 class ApiController {
     public static function index() {
@@ -12,9 +13,24 @@ class ApiController {
     }
 
     public static function guardar() {
-        $cita = new Cita($_POST) ; 
 
+        //Almacena la cita y devuelve el ID 
+        $cita = new Cita($_POST) ; 
         $resultado = $cita->guardar(); 
-        echo json_encode($resultado);
+        $id = $resultado['id'];
+
+        //Almacena los servicios con el id de la cita 
+      $idServicios = explode("," ,$_POST['servicios'] ) ; 
+      
+      foreach($idServicios as $idServicio) {
+        $args = [
+          'citasid' => $id , 
+          'serviciosid' => $idServicio 
+        ] ; 
+        $citaServicio = new CitaServicio($args) ;
+        $citaServicio->guardar() ;
+      }
+       //Retornamos una respuesta 
+         echo json_encode(['resultado' => $resultado]);
     }
 }
