@@ -21,8 +21,9 @@ include_once __DIR__ .  '/../templates/barra.php'
     <ul class="citas">
 <?php 
 $idCita = 0 ; 
-foreach($citas as $cita) {
+foreach($citas as $key => $cita) {
     if($idCita !== $cita->id) {
+        $total = 0 ; 
 
         $idCita = $cita->id;
    
@@ -36,8 +37,18 @@ foreach($citas as $cita) {
         
     <h3>Servicios</h3>
 
-  <?php } //Fin del if ?>
+  <?php } //Fin del if 
+  $total += $cita->precio ; 
+  ?>
   <p class="servicio"><?php echo $cita->servicio . " " . $cita->precio ; ?></p>
-<?php }// Fin de foreach?>
+
+  <?php 
+  $actual = $cita->id ; 
+  $proximo = $citas[$key + 1]-> id ?? 0 ;
+
+ if(esUltimo($actual,$proximo)) { ?>
+    <p class="total">Total: <span>$ <?php echo $total ;  ?></span></p>
+  <?php   
+ } }// Fin de foreach?>
    </ul>
 </div>
