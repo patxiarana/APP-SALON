@@ -27,7 +27,7 @@ $consulta .= " ON servicios.id=citasservicios.serviciosid";
 //$consulta .= " WHERE fecha =  '${fecha}' ";
 
   $citas = AdminCita::SQL($consulta) ; 
-     debuguear($citas); 
+     //debuguear($citas); 
         $router->render('admin/index', [
             'nombre' => $_SESSION['nombre'] , 
             'citas' => $citas,
