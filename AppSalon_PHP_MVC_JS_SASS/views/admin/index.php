@@ -38,7 +38,6 @@ foreach($citas as $cita) {
 
   <?php } //Fin del if ?>
   <p class="servicio"><?php echo $cita->servicio . " " . $cita->precio ; ?></p>
-</li>
 <?php }// Fin de foreach?>
    </ul>
 </div>
