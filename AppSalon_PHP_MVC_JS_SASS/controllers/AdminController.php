@@ -11,7 +11,7 @@ class AdminController {
         error_reporting(E_ALL & ~E_NOTICE);
         ini_set('display_errors', '1');
         session_start();
-
+       $fecha = date('Y-m-d') ; 
 
         //Consultar la base de datos 
       
@@ -24,13 +24,14 @@ $consulta .= " LEFT OUTER JOIN citasservicios ";
 $consulta .= " ON citasservicios.citasid=citas.id ";
 $consulta .= " LEFT OUTER JOIN servicios ";
 $consulta .= " ON servicios.id=citasservicios.serviciosid";
-//$consulta .= " WHERE fecha =  '${fecha}' ";
+$consulta .= " WHERE fecha =  '$fecha' ";
 
   $citas = AdminCita::SQL($consulta) ; 
      //debuguear($citas); 
         $router->render('admin/index', [
             'nombre' => $_SESSION['nombre'] , 
             'citas' => $citas,
+            'fecha' => $fecha
         ]) ; 
     }
 }
