@@ -53,3 +53,8 @@ foreach($citas as $key => $cita) {
  } }// Fin de foreach?>
    </ul>
 </div>
+
+
+<?php   
+ $script = "<script src='build/js/buscador.js'></script>";
+?>
