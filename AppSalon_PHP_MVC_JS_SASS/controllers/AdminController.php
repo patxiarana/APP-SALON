@@ -11,7 +11,16 @@ class AdminController {
         error_reporting(E_ALL & ~E_NOTICE);
         ini_set('display_errors', '1');
         session_start();
-       $fecha = date('Y-m-d') ; 
+      
+      $fecha = $_GET['fecha'] ??  date('Y-m-d') ;
+
+      $fechas = explode('-', $fecha);
+
+     if(!checkdate($fechas[1], $fechas[2], $fechas[0]))
+     {
+        header('Location: /404') ; 
+     };
+      
 
         //Consultar la base de datos 
       
