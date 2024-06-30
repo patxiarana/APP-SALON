@@ -47,12 +47,17 @@ class ServicioController {
         error_reporting(E_ALL & ~E_NOTICE);
         ini_set('display_errors', '1');
         session_start() ;
-        $id = is_numeric($_GET['id']);
-        if(!$id) return ; 
-        $servicio = Servicio::find($id);
+        if(!is_numeric($_GET['id'])) return ; 
+        $servicio = Servicio::find($_GET['id']);
         $alertas = [];  
         if($_SERVER['REQUEST_METHOD']==='POST') {
-            
+            $servicio->sincronizar($_POST); 
+            $alertas = $servicio->validar(); 
+
+            if(empty($alertas)){
+                $servicio->guardar(); 
+                header('Location: /servicios') ; 
+            }
         }
 
         $router->render('servicios/actualizar', [
