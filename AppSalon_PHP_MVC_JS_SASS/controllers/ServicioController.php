@@ -44,14 +44,21 @@ class ServicioController {
 
 
     public static function actualizar(Router $router) {
-     
-        
+        error_reporting(E_ALL & ~E_NOTICE);
+        ini_set('display_errors', '1');
+        session_start() ;
+        $id = is_numeric($_GET['id']);
+        if(!$id) return ; 
+        $servicio = Servicio::find($id);
+        $alertas = [];  
         if($_SERVER['REQUEST_METHOD']==='POST') {
             
         }
 
         $router->render('servicios/actualizar', [
             'nombre' => $_SESSION['nombre'],
+            'servicio' => $servicio,
+            'alertas' => $alertas, 
           ]) ; 
     }
 
