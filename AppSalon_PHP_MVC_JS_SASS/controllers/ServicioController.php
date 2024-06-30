@@ -10,7 +10,8 @@ class ServicioController {
         error_reporting(E_ALL & ~E_NOTICE);
         ini_set('display_errors', '1');
         session_start() ;
-
+        
+        isAdmin(); 
         $servicios = Servicio::all(); 
 
        $router->render('servicios/index', [
@@ -23,7 +24,7 @@ class ServicioController {
         error_reporting(E_ALL & ~E_NOTICE);
         ini_set('display_errors', '1');
         session_start() ;
-        
+        isAdmin(); 
         $servicio = new Servicio;
         $alertas = [];  
         if($_SERVER['REQUEST_METHOD']==='POST') {
@@ -47,6 +48,7 @@ class ServicioController {
         error_reporting(E_ALL & ~E_NOTICE);
         ini_set('display_errors', '1');
         session_start() ;
+        isAdmin(); 
         if(!is_numeric($_GET['id'])) return ; 
         $servicio = Servicio::find($_GET['id']);
         $alertas = [];  
@@ -69,7 +71,10 @@ class ServicioController {
 
 
     public static function eliminar() {
-     
+        error_reporting(E_ALL & ~E_NOTICE);
+        ini_set('display_errors', '1');
+        session_start() ;
+        isAdmin();  
         
         if($_SERVER['REQUEST_METHOD']==='POST') {
             $id = $_POST['id'];
